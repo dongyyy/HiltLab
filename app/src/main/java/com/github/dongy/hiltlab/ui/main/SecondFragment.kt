@@ -1,16 +1,19 @@
 package com.github.dongy.hiltlab.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.github.dongy.hiltlab.R
+import com.github.dongy.hiltlab.ui.data.MyRepository
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_second.*
 
 class SecondFragment : Fragment() {
+    val repository = MyRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,5 +34,7 @@ class SecondFragment : Fragment() {
         button.setOnClickListener {
             findNavController().navigate(R.id.action_secondFragment_to_mainFragment)
         }
+
+        Log.d("dongyyy SecondFragment", "${repository.hashCode()}")
     }
 }
