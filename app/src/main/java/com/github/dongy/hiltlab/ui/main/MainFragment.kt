@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dongy.hiltlab.R
 import com.github.dongy.hiltlab.data.MyRepository
@@ -19,6 +21,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
+    private val viewModel by viewModels<MainViewModel>()
+    private val activityViewModel by activityViewModels<MainViewModel>()
+
     @Inject
     lateinit var repository : MyRepository
 
@@ -58,5 +63,10 @@ class MainFragment : Fragment() {
         Log.d("test MainFragment", "${repository.hashCode()}")
         Log.d("test MainFragment", "applicationHash: ${applicationHash}")
         Log.d("test MainFragment", "activityHash: ${activityHash}")
+        Log.d("test MainFragment", "viewModel: ${viewModel.getRepositoryHash()}")
+        Log.d("test MainFragment", "viewModel: $viewModel")
+        //MainFragment 와 SecondFragment에 생성된 ViewModel은 다른 객체지만 ViewModel에 주입된 Repository 클레스는 @Singleton을 달아놓아서 같은 객체를 주입받는다.
+        Log.d("test MainFragment", "activityViewModel: ${activityViewModel.getRepositoryHash()}")
+        Log.d("test MainFragment", "activityViewModel: $activityViewModel")
     }
 }

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dongy.hiltlab.R
 import com.github.dongy.hiltlab.data.MyRepository
@@ -17,6 +19,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SecondFragment : Fragment() {
+    private val viewModel by viewModels<MainViewModel>()
+    private val activityViewModel by activityViewModels<MainViewModel>()
+
     @Inject
     lateinit var repository : MyRepository
 
@@ -51,5 +56,9 @@ class SecondFragment : Fragment() {
         Log.d("test SecondFragment", "${repository.hashCode()}")
         Log.d("test SecondFragment", "applicationHash: ${applicationHash}")
         Log.d("test SecondFragment", "activityHash: ${activityHash}")
+        Log.d("test SecondFragment", "viewModel: ${viewModel.getRepositoryHash()}")
+        Log.d("test SecondFragment", "viewModel: $viewModel")
+        Log.d("test SecondFragment", "activityViewModel: ${activityViewModel.getRepositoryHash()}")
+        Log.d("test SecondFragment", "activityViewModel: $activityViewModel")
     }
 }
