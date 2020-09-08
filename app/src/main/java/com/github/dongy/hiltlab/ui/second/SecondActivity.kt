@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import com.github.dongy.hiltlab.R
 import com.github.dongy.hiltlab.data.MyRepository
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SecondActivity : AppCompatActivity() {
-    val repository = MyRepository()
+    @Inject
+    lateinit var repository : MyRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

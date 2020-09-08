@@ -9,10 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.github.dongy.hiltlab.R
 import com.github.dongy.hiltlab.data.MyRepository
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_second.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SecondFragment : Fragment() {
-    val repository = MyRepository()
+    @Inject
+    lateinit var repository : MyRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
