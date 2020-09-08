@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.github.dongy.hiltlab.R
 import com.github.dongy.hiltlab.data.MyRepository
+import com.github.dongy.hiltlab.di.qualifier.ActivityHash
+import com.github.dongy.hiltlab.di.qualifier.AppHash
 import com.github.dongy.hiltlab.ui.second.SecondActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -19,6 +21,14 @@ import javax.inject.Inject
 class MainFragment : Fragment() {
     @Inject
     lateinit var repository : MyRepository
+
+    @AppHash
+    @Inject
+    lateinit var applicationHash : String
+
+    @ActivityHash
+    @Inject
+    lateinit var activityHash : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,5 +56,7 @@ class MainFragment : Fragment() {
         }
 
         Log.d("test MainFragment", "${repository.hashCode()}")
+        Log.d("test MainFragment", "applicationHash: ${applicationHash}")
+        Log.d("test MainFragment", "activityHash: ${activityHash}")
     }
 }
