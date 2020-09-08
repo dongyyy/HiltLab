@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.github.dongy.hiltlab.R
-import com.github.dongy.hiltlab.ui.data.MyRepository
+import com.github.dongy.hiltlab.data.MyRepository
 
 class MainActivity : AppCompatActivity() {
     val repository  = MyRepository()
@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("dongyyy MainActivity", "${repository.hashCode()}")
+        Log.d("test MainActivity", "${repository.hashCode()}")
     }
 }

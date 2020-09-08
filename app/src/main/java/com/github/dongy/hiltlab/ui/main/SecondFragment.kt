@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.github.dongy.hiltlab.R
-import com.github.dongy.hiltlab.ui.data.MyRepository
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.github.dongy.hiltlab.data.MyRepository
 import kotlinx.android.synthetic.main.fragment_second.*
 
 class SecondFragment : Fragment() {
@@ -35,6 +34,6 @@ class SecondFragment : Fragment() {
             findNavController().navigate(R.id.action_secondFragment_to_mainFragment)
         }
 
-        Log.d("dongyyy SecondFragment", "${repository.hashCode()}")
+        Log.d("test SecondFragment", "${repository.hashCode()}")
     }
 }
